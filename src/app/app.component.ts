@@ -18,14 +18,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.observableData = interval(1000).pipe(
-      map((value) => value * 2),
+      map((value) => value ++),
       takeUntil(this.destroy$),
       takeWhile((value) => value <= 10)
     );
     const promise = new Promise<string>((resolve) => {
       setTimeout(() => {
-        resolve('Contador finalizado');
-      }, 7000);
+        resolve('Gracias por tu atención!');
+      }, 11000);
     });
 
     this.promiseData = from(promise).pipe(takeUntil(this.destroy$));
